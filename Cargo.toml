@@ -1,8 +1,10 @@
 [package]
 name = "carol-test"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Carol (Nichols || Goulding) <carol.nichols@gmail.com>"]
 description = "A crate I use to test publishing"
 license = "MIT"
+
+categories = ["whatevs"]
 
 [dependencies]

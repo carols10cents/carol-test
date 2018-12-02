@@ -1,11 +1,31 @@
 use std::error::Error;
 use std::fs::File;
 use std::fs::OpenOptions;
+use std::io;
+use std::fmt;
 
 const MAX_DOCS_CREATED_PER_MINUTE: u8 = 100;
 
 fn num_documents_created_in_last_minute() -> u8 {
     2
+}
+
+#[derive(Debug)]
+enum DocumentServiceError {
+    RateLimitExceeded,
+    IoError(io::Error),
+}
+
+impl Error for DocumentServiceError {}
+
+impl fmt::Display for DocumentServiceError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        use DocumentServiceError::*;
+        match self {
+            RateLimitExceeded => write!(f, "You have exceeded the rate limit. Please wait and then try again."),
+            IoError(io) => write!(f, "I/O error: {}", io),
+        }
+    }
 }
 
 fn create_document(filename: &str) -> Result<File, Box<Error>> {

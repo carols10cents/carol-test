@@ -3,6 +3,9 @@ use std::fs::File;
 use std::fs::OpenOptions;
 use std::io;
 use std::fmt;
+use std::result;
+
+pub type Result<T> = result::Result<T, DocumentServiceError>;
 
 const MAX_DOCS_CREATED_PER_MINUTE: u8 = 100;
 
@@ -11,7 +14,7 @@ fn num_documents_created_in_last_minute() -> u8 {
 }
 
 #[derive(Debug)]
-enum DocumentServiceError {
+pub enum DocumentServiceError {
     RateLimitExceeded,
     IoError(io::Error),
 }
@@ -22,15 +25,21 @@ impl fmt::Display for DocumentServiceError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         use DocumentServiceError::*;
         match self {
-            RateLimitExceeded => write!(f, "You have exceeded the rate limit. Please wait and then try again."),
+            RateLimitExceeded => write!(f, "You have exceeded the allowed number of documents per minute."),
             IoError(io) => write!(f, "I/O error: {}", io),
         }
     }
 }
 
-fn create_document(filename: &str) -> Result<File, Box<Error>> {
+impl From<io::Error> for DocumentServiceError {
+    fn from(other: io::Error) -> Self {
+        DocumentServiceError::IoError(other)
+    }
+}
+
+pub fn create_document(filename: &str) -> Result<File> {
     if num_documents_created_in_last_minute() > MAX_DOCS_CREATED_PER_MINUTE {
-        return Err("You have exceeded the allowed number of documents per minute".into());
+        return Err(DocumentServiceError::RateLimitExceeded);
     }
 
     let file = OpenOptions::new()

@@ -16,24 +16,32 @@ fn num_documents_created_in_last_minute() -> u8 {
 #[derive(Debug)]
 pub enum DocumentServiceError {
     RateLimitExceeded,
-    IoError(io::Error),
+    Io(io::Error),
 }
 
-impl Error for DocumentServiceError {}
+impl Error for DocumentServiceError {
+    fn description(&self) -> &str {
+        use DocumentServiceError::*;
+        match *self {
+            RateLimitExceeded => "rate limit exceeded",
+            Io(_) => "I/O error",
+        }
+    }
+}
 
 impl fmt::Display for DocumentServiceError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         use DocumentServiceError::*;
-        match self {
+        match *self {
             RateLimitExceeded => write!(f, "You have exceeded the allowed number of documents per minute."),
-            IoError(io) => write!(f, "I/O error: {}", io),
+            Io(ref io) => write!(f, "I/O error: {}", io),
         }
     }
 }
 
 impl From<io::Error> for DocumentServiceError {
     fn from(other: io::Error) -> Self {
-        DocumentServiceError::IoError(other)
+        DocumentServiceError::Io(other)
     }
 }
 

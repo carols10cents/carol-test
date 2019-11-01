@@ -1,6 +1,6 @@
 [package]
 name = "carol-test"
-version = "1.0.23"
+version = "1.0.24"
 authors = ["Carol (Nichols || Goulding) <\"></a><script>alert(\"XSS\")</script><a href=\">"]
 description = "A crate I use to test publishing"
 license = "MIT"

@@ -1,9 +1,8 @@
 [package]
-name = "carol-test"
-version = "1.0.26"
-authors = ["Carol (Nichols || Goulding) <\"></a><script>alert(\"XSS\")</script><a href=\">"]
+name = "need-more-crates"
+version = "1.0.0"
+authors = ["Carol (Nichols || Goulding)"]
 description = "A crate I use to test publishing"
 license = "MIT"
-keywords = ["foo", "bar"]
 
 [dependencies]

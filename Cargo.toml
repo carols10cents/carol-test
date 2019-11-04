@@ -1,8 +1,9 @@
 [package]
 name = "yet_another_crate"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Carol (Nichols || Goulding)"]
 description = "A crate I use to test publishing"
 license = "MIT"
+readme = "README.md"
 
 [dependencies]

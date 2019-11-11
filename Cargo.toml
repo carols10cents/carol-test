@@ -1,6 +1,6 @@
 [package]
 name = "carol-test"
-version = "1.0.25"
+version = "1.0.26"
 authors = ["Carol (Nichols || Goulding)"]
 description = "A crate I use to test publishing"
 license = "MIT"
@@ -11,6 +11,7 @@ readme = "README.md"
 # github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/ci-workflow.yml" }
 # github-actions = { repository = "carols10cents/carol-test", workflow = "Say hello/whatever" }
 # github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/in_subdir.yml" }
-github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/a space.yml" }
+# github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/a space.yml" }
+github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/a%20space.yml" }
 
 [dependencies]

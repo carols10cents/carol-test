@@ -1,0 +1,12 @@
+name: Say hello
+on: [push]
+
+jobs:
+  something123:
+    name: Say hello
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Cargo run
+        run: cargo run
+

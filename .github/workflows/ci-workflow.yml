@@ -6,7 +6,7 @@ jobs:
     name: Test me
     runs-on: ubuntu-18.04
     steps:
-      uses: actions/checkout@master
-      name: Cargo test
-      run: cargo test
+      - uses: actions/checkout@master
+      - name: Cargo test
+        run: cargo test
 

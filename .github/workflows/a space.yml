@@ -1,0 +1,11 @@
+name: Another workflow attempt
+on: [push]
+
+jobs:
+  check_version:
+    name: Checky the version
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Rust version
+        run: rustc --version
+

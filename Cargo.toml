@@ -1,14 +1,14 @@
 [package]
 name = "carol-test"
-version = "1.0.21"
+version = "1.0.22"
 authors = ["Carol (Nichols || Goulding)"]
 description = "A crate I use to test publishing"
 license = "MIT"
 readme = "README.md"
 
 [badges]
-github-actions = { repository = "carols10cents/carol-test", workflow = "Tests" }
-# github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/ci-workflow.yml" }
+# github-actions = { repository = "carols10cents/carol-test", workflow = "Tests" }
+github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/ci-workflow.yml" }
 # github-actions = { repository = "carols10cents/carol-test", workflow = "Say hello/whatever" }
 # github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/in_subdir.yml" }
 # github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/a space.yml" }

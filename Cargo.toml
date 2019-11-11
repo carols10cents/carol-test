@@ -6,4 +6,11 @@ description = "A crate I use to test publishing"
 license = "MIT"
 readme = "README.md"
 
+[badges]
+github-actions = { repository = "carols10cents/carol-test", workflow = "Run Tests in CI" }
+github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/ci-workflow.yml" }
+github-actions = { repository = "carols10cents/carol-test", workflow = "Say hello/whatever" }
+github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/in_subdir.yml" }
+github-actions = { repository = "carols10cents/carol-test", workflow = ".github/workflows/a space.yml" }
+
 [dependencies]
